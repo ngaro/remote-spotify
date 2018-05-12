@@ -2,27 +2,32 @@
 
 This container allows you to run spotify on a server and control it from external clients.
 
-It's meant for users with a free account, premium users can use better ways to do this.
+It makes spotify-connect unnecessary, without making it impossible. It can solve the following problems:
+
+* You don't want to install a full spotify on clients just to play music on another device. Be warned: You will need to install xpra on those clients. This is a really light package available on pretty much all distributions.
+* You want to stop and start spotify without having physical access to the server.
+* You are afraid spotify-connect will become a feature only available for premium users.
 
 ## Usage
-Suppose you want to run spotify on a server called 'spot' that listens on tcp/12345 for clients that want to control it:
+Suppose you want to run spotify on a server called 'spot' listening on tcp/12345 for clients that want to control it:
 
 * Run the container :
 
-`docker run -d --device /dev/snd:/dev/snd -p 12345:10000 --rm --name remo-spot garo/remote-spotify`
+```
+docker run -d --device /dev/snd:/dev/snd -p 12345:10000 \
+--name remo-spot garo/remote-spotify
+```
 
 * Wait a couple of seconds for everything to start...
 
-* You can now use xpra (available in the standard repositories of all large distributions) on a client to connect to it:
+* You can now use xpra on a client to connect to it with: `xpra attach tcp:spot:12345`
 
-`xpra attach tcp:spot:12345`
-
-You will now see the standard client, but all audio will played on the server.
+Spotify will be visible on the client, but all audio will played on the server.
 * If you detach the xpra connection from the client spotify will continue to play.
-* If you close spotify the container will be stopped (and removed if you included "--rm" when launching the container).
+* Closing spotify will also stop the container. With `docker start remo-spot` it will start again. This can also be done remotely with `ssh spot docker start remo-spot`
 
 ## Development
 Want to improve this (bugfixes, extra features, ...) ?
 
-Fork this repository instead of cloning.
-Me and other users might be interested in your changes !
+Fork this repository on GitHub instead of cloning it,
+I and other users might be interested in your changes !
