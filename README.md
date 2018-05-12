@@ -9,7 +9,7 @@ Suppose you want to run spotify on a server called 'spot' that listens on tcp/12
 
 * Run the container :
 
-`docker run -d --device /dev/snd:/dev/snd -p 12345:10000 --rm --name remo-spot remote-spotify`
+`docker run -d --device /dev/snd:/dev/snd -p 12345:10000 --rm --name remo-spot garo/remote-spotify`
 
 * Wait a couple of seconds for everything to start...
 
