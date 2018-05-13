@@ -26,6 +26,8 @@ Spotify will be visible on the client, but all audio will played on the server.
 * If you detach the xpra connection from the client spotify will continue to play.
 * Closing spotify will also stop the container. With `docker start remo-spot` it will start again. This can also be done remotely with `ssh spot docker start remo-spot`
 
+The environment variable `XPRA_PORT` is `10000` by default but can be changed to make xpra listen to another port.
+
 ## Development
 Want to improve this (bugfixes, extra features, ...) ?
 
