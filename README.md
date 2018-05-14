@@ -35,7 +35,7 @@ You can also use this to run spotify locally in a container:
 ```
 docker run -d --net host -e DISPLAY=$DISPLAY --device /dev/snd \
 -v /dev/shm:/dev/shm -v $HOME/.Xauthority:/root/.Xauthority \
---name local-spotify remote-spotify spotify
+--name local-spotify garo/remote-spotify spotify
 ```
 
 ## Development
