@@ -37,6 +37,10 @@ docker run -d --net host -e DISPLAY=$DISPLAY --device /dev/snd \
 -v $HOME/.Xauthority:/root/.Xauthority --rm remote-spotify spotify
 ```
 
+## Issues
+
+* The spotify window can turn black when scrolling, resizing, ...
+
 ## Development
 Want to improve this (bugfixes, extra features, ...) ?
 
