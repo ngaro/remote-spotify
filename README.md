@@ -8,7 +8,7 @@ It makes spotify-connect unnecessary, without making it impossible. It can solve
 * You want to stop and start spotify without having physical access to the server.
 * You are afraid spotify-connect will become a feature only available for premium users.
 
-## Usage
+## Remote Usage
 Suppose you want to run spotify on a server called 'spot' listening on tcp/12345 for clients that want to control it:
 
 * Run the container :
@@ -27,6 +27,15 @@ Spotify will be visible on the client, but all audio will played on the server.
 * Closing spotify will also stop the container. With `docker start remo-spot` it will start again. This can also be done remotely with `ssh spot docker start remo-spot`
 
 The environment variable `XPRA_PORT` is `10000` by default but can be changed to make xpra listen to another port.
+
+## Regular (local) usage
+
+You can also use this to run spotify locally in a container:
+
+```
+docker run -d --net host -e DISPLAY=$DISPLAY --device /dev/snd \
+-v $HOME/.Xauthority:/root/.Xauthority --rm remote-spotify spotify
+```
 
 ## Development
 Want to improve this (bugfixes, extra features, ...) ?
